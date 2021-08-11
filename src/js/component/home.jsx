@@ -1,24 +1,49 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useEffect, useState } from "react";
+import ToDoList from "./todolist.jsx";
 
 //create your first component
 const Home = () => {
+	const [taskList, setTaskList] = useState([]);
+	const [listMap, setListMap] = useState("");
+
+	const keepTask = newTask => {
+		setTaskList([...taskList, newTask]);
+	};
+
+	useEffect(() => {
+		if (taskList.length) {
+			setListMap(
+				taskList.map((task, index) => {
+					return <ToDoList text={task} key={index} />;
+				})
+			);
+		}
+	}, [taskList]);
+
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container-flex">
+			<form
+				className="to-do-list"
+				onSubmit={event => {
+					event.preventDefault();
+				}}>
+				<h1>
+					MY TASKS <i className="fas fa-pencil-alt"></i>
+				</h1>
+				<p className="p-3">What do you have to do today?</p>
+				<input
+					className="col-6 offset-3 rounded"
+					type="tasks"
+					onKeyPress={event => {
+						if (event.key == "Enter") {
+							keepTask(event.target.value);
+							event.target.value = "";
+						}
+					}}
+					placeholder="write something!"
+				/>
+				<ul className="offset-3">{listMap}</ul>
+			</form>
 		</div>
 	);
 };

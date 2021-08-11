@@ -1,13 +1,43 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-/* 
+div {
+ display: table;
+ margin: auto;
+}
 
-    You can write your own styles here...
+form, p{
+    display: table;
+    margin: auto;
+   color: white;
     
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+}
 
-*/
+h1 {
+    font-size: 4rem;
+    padding: 1rem;
+    display: table;
+    margin: auto;
+    color: white;
+    
+
+}
+
+.to-do-list {
+    height: 30rem;
+    width: 30rem;
+    background-color: rgb(49, 86, 89);
+    margin-top: 2em;
+    border-radius: 5%;
+    border: 5px solid;
+    border-color: rgb(198, 224, 255);
+    z-index: -10;
+}
+
+.ul{
+    display: table;
+    margin: auto;
+}
+
+body {
+    background-color: rgb(37, 48, 49);
+}
